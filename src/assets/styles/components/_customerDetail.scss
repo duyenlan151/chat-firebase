@@ -1,0 +1,537 @@
+// Declare screen breakpoint for responsive
+$breakpoints: (
+    "iphoneX": 376px,
+    "iphonePlus": 415px,
+    "ipad": 767px,
+    "tablet-wide":  992px,
+    "ipadPro": 1025px,
+    "bootstrapXl": 1200px,
+    "mac": 1440px
+);
+@mixin mediaQuery ($size,$type){
+    $mquery:"";
+    @if map-has-key($breakpoints, $size){
+      $width: map-get($breakpoints , $size );
+      @if $type == "min" {
+        $width : $width + 1;
+      } @else if $type == "max" {
+        $width : $width - 1;
+      };
+      @media screen and (#{$type}-width:$width){
+        @content;
+      }
+    }
+}
+
+.custForm{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    @media screen and (max-width: 1024px) {
+      flex-wrap: wrap;
+    }
+    &__pane {
+        background-color: $color-white;
+        width: 50%;
+        
+        @media screen and (max-width: 1024px) {
+          width: 100%;
+        }
+        & label{
+            white-space: nowrap; 
+            
+            overflow: hidden;
+            text-overflow: ellipsis;
+            @include mediaQuery('iphonePlus',"max"){
+                overflow: visible;
+            }
+        }
+        &:first-child{
+            padding-right: 0;
+            padding-left: 0;
+            margin-right: 1rem;
+            @include mediaQuery('tablet-wide',"max"){
+                padding-right: 20px;
+                padding-bottom: 0;
+            }
+            @media screen and (max-width: 1024px) {
+              margin-right: 0;
+              margin-bottom: 0.5rem;
+              padding-right: 0;
+            }
+        }
+        &--preview{
+            position: absolute;
+            right: -34%;
+            top: 0;
+            max-width: 32%;
+            // @include mediaQuery('tablet-wide',"max"){
+            //     position: absolute;
+            //     right: -176px;
+            //     top: 11px;
+            //     max-width: 36%;
+            // }
+            @include mediaQuery('ipad',"max"){
+                position: relative;
+                width: 100%;
+                right: auto;
+                top: auto;
+                max-width: 100%;
+            }
+            &Img{
+                width: 100%;
+                height: auto;
+                margin: 0.6rem 0;
+            }
+        }
+        &--title{
+          padding: 1rem 1.2rem;
+          padding-bottom:0;
+          font-weight: 600;
+          letter-spacing: 0.2px;
+          &Above{
+            padding: 0.45rem 1rem;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 1px;
+          }
+        }
+        &--inner{
+            position: relative;
+            padding: 1rem 1rem;
+            &.form-group{
+            margin-bottom: 0.5rem;
+            align-items: center;
+            // cancle double form-group stle
+            & div div.form-group{
+                margin-bottom: 0;                
+            }
+          }
+        }
+        &--info{
+            padding: 1rem;
+            padding-left: 1.5rem;
+        }
+        &--thumbnail{
+            height :calc(2.55rem + 2px);
+        }
+        & input:disabled, select:disabled{
+            background-color: transparent;
+        }
+    }
+    &__Date{
+        &--select{
+            width: 98px;
+            padding: 6px 12px;
+            margin-right: 5px;
+            font-size: inherit;
+            font-family: inherit;
+            border: 1px solid #ced4da;
+            &:hover{
+                cursor: pointer;
+            }
+            &Shorter{
+                width: 12%;
+                height :calc(2.55rem + 2px);
+                font-size: 1rem;
+                padding: 6px 12px;
+                margin-right: 5px;
+                margin-bottom:0.5rem;
+                border: 1px solid #ced4da;
+                // border-radius: .25rem;
+                @include mediaQuery('tablet-wide',"max"){
+                    width: 25%;
+                }
+                @include mediaQuery('ipadPro',"max"){
+                    width: 23%;
+                }
+                @include mediaQuery('iphonePlus',"max"){
+                    width: 20%;
+                }
+                @include mediaQuery('iphoneX',"max"){
+                    width: 18%;
+                }                
+            }
+        }
+        &--birthDay{
+            display: flex;
+            align-items: center;
+        }
+        &--phoneNum{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            & input{
+                max-width: 30%;
+            }
+        }
+        &--label{
+            margin-right:10px;
+        }
+    }
+    &__DateGroup{
+        display: flex;
+        align-items: center;
+    }
+    & label{
+        white-space: nowrap; 
+        
+        overflow: hidden;
+        text-overflow: ellipsis;
+        @include mediaQuery('iphonePlus',"max"){
+            overflow: visible;
+        }
+    }
+}
+.backBtn, .uploadFileBtn, .editBtn{
+    background-color: #4e81bd;
+    color: #000;
+    border: 1px solid #7e96b1;
+    border-radius: 5px;
+    padding: .5rem;
+    margin-top:1rem;
+    float: right;
+    margin-right:1.5rem;
+}
+.editBtn{
+    background-color: #D3C4D4;
+}
+.uploadFileBtn{
+    background-color: palegoldenrod;
+}
+
+.douInput{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    &__one{
+        width: 35%;
+        height: calc(1.5em + .75rem + 2px);
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        &--shorter{
+            // height: calc(1.5em + .75rem + 2px);
+            // border: 1px solid #ced4da;
+            // border-radius: .25rem;
+            width:40%;
+        }
+    }
+    &__two{
+        &--shorter{
+            // height: calc(1.5em + .75rem + 2px);
+            // border: 1px solid #ced4da;
+            // border-radius: .25rem;
+            width: 45%;
+        }
+    }
+    & label{
+        padding:auto;
+        text-align: center;
+        font-size: 1rem;
+    }
+    &__postal{
+        @include mediaQuery('ipadPro',"min"){
+            max-width: 25%;
+        }
+        @include mediaQuery('bootstrapXl',"min"){
+            max-width: 22%;
+        }
+        @media screen and (min-width: 1600px) {
+            max-width: 18%
+        }
+    }
+}
+
+.previewImg{
+    max-width: 400px;
+    height: auto;
+    margin: 2rem 0;
+}
+.marginBottom{
+    margin-bottom: 70px;
+}
+.uploadFileBtn{
+    font-size: 1rem;
+}
+.custom-control-description{
+    font-size: 1rem;
+}
+.monthInput{
+    width: 15%;
+}
+label{
+    line-clamp: 1;
+}
+.winterPeriod{
+    @include mediaQuery('ipadPro',"max"){
+        margin-bottom: 9px;
+    }
+    @include mediaQuery('ipad',"min"){
+        display:flex;
+        width:100%;
+        justify-content:space-between;
+        margin-top:1rem;
+        &__input{
+            width: 82.5%;
+            float: right;
+        }
+    }
+    @include mediaQuery('ipad',"max"){
+        display:block;
+        width:100%;
+        margin-top:15px;
+        &__wrapper{
+            justify-content:space-evenly;
+            margin-top:6px;
+        }
+        &__label{
+            width: 50%;
+        }
+        &__input{
+            width: 100%;
+        }
+    }    
+    @include mediaQuery('bootstrapXl',"min"){
+        align-items: center;
+        &__wrapper{
+            margin-top:0;
+            margin-left:10px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            &> div {
+                margin-top: 0px;
+                margin-left:10px;
+            }
+        }
+        &__label{
+            width: 20%;
+        }
+        &__input{
+            width: 80%;
+            height :calc(2.55rem + 2px);
+        }
+    }
+}
+.pointForm{
+    background-color: $color-white;
+    padding: 2rem;
+    width: 50%;
+    margin-top:2rem;
+    margin-left: auto;
+    margin-right: auto;
+    @include mediaQuery('ipadPro',"max"){
+        width: 100%;
+        padding: 1rem
+    }
+    &__inner{
+        padding-top: 2rem;
+    }
+    &__date{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &--inner{
+            width: 45%;
+        }
+        & input{
+            width: 100%;
+        }
+        &--label{
+            text-align: center;
+        }
+    }
+    & label{
+        white-space: nowrap; 
+        
+        overflow: hidden;
+        text-overflow: ellipsis;
+        @include mediaQuery('iphonePlus',"max"){
+            overflow: visible;
+        }
+    }
+}
+.divTable{
+    background-color: #fff;
+    width: 100%;
+    &__row{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 10px;
+        padding-top: 5px;
+        align-items: center;
+        & input{
+            text-align: center;
+        }
+        &--category{
+            padding-left: 1rem;
+            width: 100%;
+            flex-grow: 2;
+            text-align: center;
+        }
+        &--startDate{
+            padding-left: 1rem;
+            width: 100%;
+            text-align: center;
+            flex-grow: 2;
+        }
+        &--status{
+            padding-left: 1rem;
+            width: 100%;
+            text-align: center;
+            flex-grow: 1;
+        }
+        &--action{
+            padding-right: 1rem;
+        }
+    }
+    &__date{
+        &--wrapper{
+            max-width: 30%;
+        }
+    }
+    &__header{
+        padding-top: 1rem;
+        background-color:#f4f0f1;
+    }
+    &__body{
+        display: flex;
+        flex-direction: column;
+        & input, textarea, select{
+            background-color: inherit;
+            border: none;
+            border-bottom: 1px #becad9 solid;
+            border-radius: 0;
+        }
+        & div.divTable__row:nth-child(even){
+            background-color:#f4f0f1;
+        }
+    }
+    &__pagination{
+        padding-top:1rem;
+        vertical-align: middle;
+    }    
+    & .plusBtn{
+        background-color: #4caf50;
+        padding: 0.2rem 0.8rem;
+        margin: 1rem;
+        color: #fff;
+        font-size: 1.2rem;
+    }
+    & .minusBtn{
+        background-color: #f44336;
+        color: #fff;
+        padding: 0.2rem 0.8rem;
+        font-size: 1.5rem;
+    }
+}
+
+.search{
+    &__input{
+        margin-top:1rem;
+        & div.group-input__select{
+            max-width: 20rem;
+        }
+        & select{
+            max-width: 20rem;
+        }
+    }
+    &__left{
+        padding:1rem;
+    }
+}
+
+
+.text-align{
+    &-center{
+            @include mediaQuery('bootstrapXl',"min"){
+                text-align: center;
+            }
+        }
+    &-center{
+        text-align: left;
+    }
+}
+
+// Cancel boostrap padding in mobile
+.pl-0, .px-0 {
+    @include mediaQuery('ipadPro',"max"){
+        padding-left: 15px!important;
+    }
+    
+}
+.storeMargin{
+    margin-top: 2rem;
+    &__mobile{
+        @include mediaQuery('ipad',"max"){
+            margin-top: 1.5rem;
+        }
+    }
+}
+.news__duration{
+    width: 50%;
+    @include mediaQuery('iphonePlus',"max"){
+        width: 100%;
+    }
+}
+button.btn a{
+    text-decoration: none;
+    color: #fff;
+}
+.topScreen__notify{
+    display: flex;
+    justify-content: space-between;
+    & a{
+        text-decoration: underline;
+    }
+}
+div.group-input__select input.selectConfig{
+    width: 100%;
+}
+.padding-top-5px{
+    padding-top: 5px;
+}
+.align-center{
+    align-items: center;
+}
+.inline-flex{
+    display: inline-flex;
+}
+.pointList{
+    &__search {
+        display: flex;
+        justify-content: space-between;
+        &--result{
+            width:30%;
+        }
+    }
+}
+.dropdown-menu--width{
+    min-width: 15rem;
+}
+
+
+.addService__btn{
+    border: 1px solid #335696;
+    border-radius: 5px;
+    &:hover{
+        opacity: 0.8;
+    }
+}
+.fa-plus-circle{
+    font-size: 1.2rem;
+    color: #335696;
+}
+.store-table{
+    &__header{
+        display: flex;
+        flex-direction: column;
+    }
+    &--border{
+        border: 1px solid $main-color-default-5;
+    }
+}
+.flex{
+    display: flex;
+}

@@ -1,0 +1,16 @@
+.sw-breadcrumb-primary{
+    background-color: $color-white;    
+    margin-bottom: 0;
+    padding: 10px 0;
+    border-bottom: 0;
+    .breadcrumb-item{
+        a{
+            color: #ccc;
+        }
+        &.active{
+            a{
+                color: $main-color-secondary;
+            }
+        }
+    }
+}

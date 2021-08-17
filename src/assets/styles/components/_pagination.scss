@@ -1,0 +1,94 @@
+
+// custom border, padding
+.dataTables_wrapper{
+    .dataTables_paginate{
+        a.paginate_button{
+            border: 1px solid #ccc;
+            padding: 0.3rem 0.8rem;
+            font-size: 14px;
+            margin-left: 0.7rem;
+            &.current, &.current:hover, &:hover, &:active, &:focus{
+                transition: all 0.3s ease-out;
+                background: $color-white;
+                border: 1px solid $color-pagination;
+                box-shadow: none;
+                color: $color-pagination !important;
+            }
+        }
+
+    }
+}
+// custom buttom pagination item
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    background-color: none;
+    border: 1px solid #ccc;
+}
+
+// custom disable button
+.dataTables_wrapper .dataTables_paginate a.paginate_button.disabled,
+.dataTables_wrapper .dataTables_paginate a.paginate_button.disabled:hover,
+.dataTables_wrapper .dataTables_paginate a.paginate_button.disabled:active{
+    border: 1px solid #ccc;
+}
+
+
+// custom button pagination previous and next of dataTable
+.paginate_button{
+    border: 1px solid #ccc;
+    &.previous{
+        position: relative;
+        &.disabled::before{
+            color: #ccc;
+        }
+    }
+    &.next{
+        position: relative;
+        &.disabled::before{
+            color: #ccc;
+        }
+    }
+}
+
+a.paginate_button,
+.paginate_button.next:before, .paginate_button.previous:before{
+  line-height: unset;
+}
+
+.table-controls{
+  div{
+    margin-left: 1rem;
+  }
+}
+
+div.dataTables_length:after{
+  display: none;
+}
+div.dataTables_length {
+  margin-left: 1rem;
+}
+div.dataTables_length>label select{
+  height: 2.5rem;
+}
+div.dataTables_info{
+  margin-bottom: 0;
+}
+
+div.dataTables_wrapper .dataTables_paginate .paginate_button{
+  border-radius: 50%;
+}
+
+@media (min-width: 576px){
+  div.dataTables_length {
+      min-width: 100px;
+  }
+}
+
+
+@media screen and (max-width: 767px){
+  .dataTables_wrapper div.dataTables_paginate {
+      margin-top: 0;
+  }
+  .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter{
+    margin-top: 0.3rem;
+  }
+}

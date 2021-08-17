@@ -1,0 +1,94 @@
+// Defined Colors
+$main-color-default: #14498F; // rgb(20, 73, 143)
+$main-color-default-5: rgba(20, 73, 143, 0.5); // rgb(20, 73, 143)
+$main-color-primary: #F6C143; // rgb(255, 172, 48)
+$main-color-secondary: #040707; // rgb(7, 4, 4)
+$color-black: #3b3b3b;
+$color-white: #FFFFFF;
+$color-blue-light: #00A3DD;
+$color-gray: #BEBEBE;
+$color-body: #040707;
+$color-red: #B12F33;
+$color-yellow: #FFAC30;
+$color-green: #5C7A58;
+$color-bg: #e8ecf4;
+$color-bg-btn: #4f81bd;
+$color-bg-btn-5: rgba(70, 118, 177, 1);
+$color-bg-table: rgb(242, 242, 242);
+$color-bg-table-even: rgb(242, 242, 242);
+$color-bg-badges: rgb(255, 172, 48);
+$color-pagination: rgb(74, 151, 248);
+$color-tab-active: #1F497D;
+$color-text: #262626;
+$color-bg-holiday: #f6f8ff;
+// $color-border: rgb(229, 234, 233);
+$color-orange: rgb(247, 150, 70);
+$color-green-light: rgb(155, 187, 89);
+$color-black-main: #000000;
+$color-border-bottom: #f6f6f6;
+$color-caret: #dedede;
+$color-success: #28A745;
+$color-success-5: #28a7469a;
+$color-note: #FCFAD1;
+$color-grey: #808080;
+$color-grey-5: #7c7474;
+$color-note: #FCFAD1;
+$btn-gray: #808080;
+
+// Color CMS
+$color-heading: #231F20;
+$color-info: #bebebe;
+$color-gray-light: #606060;
+
+// color new
+$color-border: #f1f1f1;
+$color-bg-gray: #f6f6f6;
+
+// Path
+$staticPath: './../..';
+
+
+//Font
+$font-primary: 'AvenirNext-Regular';
+$font-primary-bold: 'AvenirNext-Bold';
+
+// letter-spacing
+$spacing-18: -0.18px;
+$spacing-33: -0.33px;
+$spacing-47: -0.47px;
+$spacing-134: -1.34px;
+
+// Toolbars
+$toolbar-height: 70px;
+$toolbar-bg: #0C2A64;
+// Top-bar
+$top-bar-height: 40px;
+$top-bar-bg: #0C2A64;
+// Sidebar
+$sidebar-width: 64px;
+// filter box:
+$filter-box: 50px;
+
+// Footer
+$footer-height: 49px;
+// Body
+
+$transition-all: all 0.15s ease-out;
+
+$border-color: #4b525a;
+$border-sub-menu: rgba(204, 204, 204, 0.4);
+$border-color-table: rgba(130, 130, 130, 0.3);
+$border-color-footer: #9D9D9D;
+$grey: #e0e0e0;
+
+// Bootstrap Breakpoints
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1600px;
+
+// z-index
+$z-index-lv1: 35;
+$z-index-lv2: 40;

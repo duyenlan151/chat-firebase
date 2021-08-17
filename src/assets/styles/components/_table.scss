@@ -1,0 +1,259 @@
+.table-group{
+    .table-group-header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__heading{
+          padding: 0 0.3rem;
+          font-size: 18px;
+          margin: 0;
+          text-transform: capitalize;
+        }
+    }
+}
+
+
+// style table
+.sw-table-default{
+    thead{
+        // border: 1px solid $main-color-default-5;
+    }
+}
+.sw-table-primary{
+    thead{
+        background: $color-bg-table;
+    }
+}
+div.sw-table-child{
+    margin-left: auto;
+    table{
+      tbody{
+        tr{
+          &:nth-child(odd) td{
+            background-color: #f2f2f2;
+          }
+        }
+      }
+    }
+}
+
+// * style group-item  in table*
+//  ============================
+.group-item {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    &__img{
+      max-width: 9.375rem;
+        img{
+            padding: 0.35rem 0;
+            background-color: $color-white;
+            // border: 1px solid $main-color-default-5;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    &__content{
+        padding: 0 1rem;
+    }
+    &__content{
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        .content-btn{
+          display: flex;
+          flex-direction: column;
+            margin-top: 0.4rem;
+            button{
+              &:not(:first-child){
+                margin-top: 0.2rem;
+              }
+            }
+        }
+    }
+    &__table{
+      flex-grow: 1;
+    }
+    @media screen and (max-width: 1140px) {
+      flex-wrap: wrap;
+      justify-content: start;
+      &__table{
+        margin-top: 0.5rem;
+      }
+    }
+}
+// ==================================================
+// Custom css dataTable of Jquery
+// ==================================================
+//
+// .dataTables_length,
+.dataTables_filter{
+    display: none;
+}
+div.slider {
+    display: none;
+}
+table.dataTable thead{
+  background-color: #f2f2f2;
+}
+table.dataTable.sw-table-primary thead th,
+table.dataTable.sw-table-primary thead td{
+    // border-bottom: 1px solid $main-color-default;
+}
+table.dataTable.row-border.sw-table-primary tbody th,
+table.dataTable.row-border.sw-table-primary tbody td,
+table.dataTable.display.sw-table-primary tbody th,
+table.dataTable.display.sw-table-primary tbody td{
+    // border-color: $main-color-default;
+    white-space: nowrap;
+}
+// table.dataTable.row-border.sw-table-child tbody tr:first-child th,
+// table.dataTable.row-border.sw-table-primary tbody tr:first-child td,
+// table.dataTable.display.sw-table-primary tbody tr:first-child th,
+.table-group .dataTable thead .sorting,
+.table-group table.dataTable thead .sorting_asc,
+.table-group table.dataTable thead .sorting_asc{
+    // background-image: unset !important;
+}
+
+table.dataTable.stripe.sw-table-primary tbody tr.odd,
+table.dataTable.display.sw-table-primary tbody tr.odd,
+table.dataTable.display.sw-table-primary tbody tr.odd>.sorting_1,
+table.dataTable.order-column.stripe.sw-table-primary tbody tr.odd>.sorting_1{
+    background-color: $color-white;
+}
+table.dataTable tbody tr.even,
+table.dataTable.display.sw-table-primary tbody tr.even>.sorting_1,
+table.dataTable.order-column.stripe.sw-table-primary tbody tr.even>.sorting_1{
+    background-color: $color-bg-table-even;
+}
+table.dataTable thead th, table.dataTable thead td,
+table.dataTable tbody th, table.dataTable tbody td{
+  white-space: nowrap;
+  text-align: center;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+	border-bottom: 1px solid #EBEBEB;
+}
+
+table.dataTable.display.sw-table-primary tbody td {
+    border-color: #EBEBEB;
+}
+
+table.dataTable.sw-table-primary thead td, table.dataTable.sw-table-primary thead th {
+	border-bottom: 1px solid #EBEBEB;
+}
+td.details-control{
+  position: relative;
+}
+td.details-control::before {
+    content: "\f275";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Material-Design-Iconic-Font';
+    font-size: inherit;
+    font-size: 25px;
+    cursor: pointer;
+}
+td.details-status::before {
+    font-family: "Material Icons";
+    content: "\e92d";
+    color: $main-color-secondary;
+    font-size: 25px;
+    cursor: pointer;
+}
+tr.shown td.details-control::before {
+    content: "\f270";
+}
+
+// style table controls of dataTable - Pagination, Info, Length
+.table-controls{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem 0.5rem;
+
+}
+.dataTables_wrapper{
+  margin-top: 0;
+}
+.dataTables_wrapper .table-controls .dataTables_info{
+    float: none;
+    padding: 0;
+}
+.dataTables_wrapper .table-controls .dataTables_paginate.paging_simple_numbers{
+    float: none;
+    padding: 0;
+}
+.dataTables_wrapper .table-controls .dataTables_length label{
+    margin-bottom: 0;
+    select{
+        padding: 4px 10px;
+    }
+}
+.dataTables_wrapper.no-footer div.dataTables_scrollBody,
+table.dataTable.table thead th, table.dataTable.table thead td{
+    border-bottom: 1px solid $color-bg;
+}
+div.dataTables_wrapper .table{
+    margin: 0;
+    opacity: 1 !important;
+}
+.table td, .table th{
+  border-top: none;
+}
+table.table td.sw-border-default, table.table th{
+  border-top: 1px solid rgba(20, 73, 143, 0.1);
+}
+
+.table-dis .table-controls{
+  display: none;
+}
+
+// style table user profile
+.sw-table-profile{
+  background-color: $color-white;
+  border: 1px solid rgba(190, 190, 190, 0.5);
+  margin-top: 0.5rem;
+  &__info{
+    font-size: 12px;
+    &--left, &--right{
+      padding: 0.3rem 0.5rem;
+      display: inline-block;
+    }
+    &--left{
+      border-right: 1px solid rgba(190, 190, 190, 0.5);
+      min-width: 13rem;
+      background-color: #F2F2F2;
+      
+    }
+    &:not(:first-child){
+      border-top: 1px solid rgba(190, 190, 190, 0.5);
+    }
+  }
+}
+
+.table-small{
+  span{
+    &:first-child{
+      min-width: 7.5rem;
+      display: inline-block;
+      margin-right: 1rem;
+    }
+  }
+}
+
+table.dataTable thead th.sorting{
+  background-image: url('/static/images/icons/sort_both.png');
+}

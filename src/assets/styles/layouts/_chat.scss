@@ -1,0 +1,125 @@
+.messages,
+.messages-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: calc(100vh - 48px - 64px);
+    min-height: calc(100vh - 48px - 64px);
+    background-color: $color-white;
+    &__content {
+        // max-height: 70vh;
+        flex-grow: 1;
+        overflow: auto;
+        padding: 1rem;
+    }
+    &__controls {
+        // background-color: $color-bg-gray;
+        padding: 0.5rem;
+        border-top: 1px solid $color-border;
+        textarea {
+            // background-color: transparent;
+            // border: none;
+            // max-height: 20px !important;
+            // overflow: auto !important;
+            width: 100%;
+            border: 0;
+            border-radius: 2px;
+            padding: 0.5rem;
+            resize: none;
+            &:focus {
+                outline: none;
+                border: none;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+.ant-comment-content-detail p {
+    margin-bottom: inherit;
+    white-space: pre-wrap;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    padding: 0.8rem;
+    background-color: #f6f6f6;
+}
+
+.comment-wrapper {
+    .ant-comment-inner {
+        .ant-comment-content {
+            max-width: 35rem;
+            .ant-comment-actions {
+                margin-top: 0.2rem;
+            }
+        }
+    }
+    &.comment--right {
+        .ant-comment-avatar {
+            margin: 0 0.5rem;
+        }
+        .ant-comment-inner {
+            flex-direction: row-reverse;
+            .ant-comment-content {
+                max-width: 35rem;
+                text-align: right;
+                .ant-comment-content-author {
+                    justify-content: flex-end;
+                }
+            }
+        }
+    }
+}
+
+aside {
+    @media screen and (max-width: $breakpoint-md) {
+        &.ant-layout-sider {
+            top: 0;
+            left: 0;
+            height: 100%;
+            z-index: 10;
+            position: fixed;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-out;
+            &.hide {
+                left: -100%;
+            }
+        }
+    }
+}
+
+.ant-layout-header {
+    padding: 0 18px;
+    &.ant-layout-sider {
+    }
+}
+
+.btn-close{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.tl{
+    visibility: hidden;
+    @media screen and (max-width: $breakpoint-md) {
+        visibility: visible;
+    }
+}
+
+
+.emoji{
+    position: relative;
+    &-list{
+        position: absolute;
+        bottom: 134%;
+        right: 1rem;
+        .ant-card-body{
+            padding: 1rem 0.25rem;
+            span{
+                padding: 0.35rem;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+    }
+}
