@@ -39,7 +39,7 @@ export default function SidebarChat(props) {
                     Add new friend
                 </Button>
             </div>
-            <Menu theme="light" mode="inline" defaultSelectedKeys={["1"]}>
+            <Menu theme="light" mode="inline" defaultSelectedKeys={["0"]}>
                 {!isEmpty(roomsRef) &&
                     roomsRef.map((room, index) => (
                         <Menu.Item key={index + 1}>

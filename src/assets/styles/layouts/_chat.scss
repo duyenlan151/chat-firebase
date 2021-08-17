@@ -11,6 +11,9 @@
         flex-grow: 1;
         overflow: auto;
         padding: 1rem;
+        @media screen and (max-width: $breakpoint-sm) {
+            padding: 1rem 0.5rem;
+        }
     }
     &__controls {
         // background-color: $color-bg-gray;
@@ -42,8 +45,13 @@
     margin-top: 0.5rem;
     padding: 0.8rem;
     background-color: #f6f6f6;
+    width: fit-content;
 }
-
+.comment--right{
+    .ant-comment-content-detail p {
+        margin-left: auto;
+    }
+}
 .comment-wrapper {
     .ant-comment-inner {
         .ant-comment-content {
@@ -55,7 +63,8 @@
     }
     &.comment--right {
         .ant-comment-avatar {
-            margin: 0 0.5rem;
+            margin-right: 0;
+            margin-left: 0.5rem;
         }
         .ant-comment-inner {
             flex-direction: row-reverse;
