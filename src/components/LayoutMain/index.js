@@ -1,12 +1,22 @@
 import { Layout } from "antd";
 import HeaderMain from "components/Header";
 import SideBar from "components/SideBar";
-import React, { useState } from "react";
+import { AppContext } from "Context/AppProvider";
+import React, { useContext, useState } from "react";
 
 const { Content } = Layout;
 
 export default function LayoutMain({ children }) {
     const [collapsed, setcollapsed] = useState(false);
+
+    const { selectedRoomId } = useContext(AppContext);
+
+    useEffect(() => {
+        toggle();
+        return () => {
+            
+        }
+    }, [selectedRoomId])
 
     const toggle = () => {
         setcollapsed(!collapsed);
