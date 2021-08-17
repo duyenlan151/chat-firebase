@@ -1,37 +1,43 @@
 import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
-import { Button, Col, Row } from "antd";
+import { Button, Col, Row, notification } from "antd";
 import Text from "antd/lib/typography/Text";
 import Title from "antd/lib/typography/Title";
 import firebase, { auth } from "firebase/config";
 import { addDocument, generateKeywords } from "firebase/services";
 import React from "react";
 
-
 const fbProvider = new firebase.auth.FacebookAuthProvider();
 const ggProvider = new firebase.auth.GoogleAuthProvider();
 
 export default function Login() {
-
     const handleLogin = async (provider) => {
-        const { additionalUserInfo, user } = await auth.signInWithPopup(
-            provider
-        );
-        
-        
-        if (additionalUserInfo?.isNewUser) {
-            // nếu lần đầu tiên user login vào
-            // ghi dữ liệu vào database
-
-            await addDocument("users", {
-                displayName: user.displayName,
-                email: user.email,
-                photoURL: user.photoURL,
-                uid: user.uid,
-                providerId: additionalUserInfo.providerId,
-                keywords: generateKeywords(user.displayName?.toLowerCase()),
-                friends: []
+        try {
+            const { additionalUserInfo, user } = await auth.signInWithPopup(
+                provider
+            );
+    
+            if (additionalUserInfo?.isNewUser) {
+                // nếu lần đầu tiên user login vào
+                // ghi dữ liệu vào database
+    
+                await addDocument("users", {
+                    displayName: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    uid: user.uid,
+                    providerId: additionalUserInfo.providerId,
+                    keywords: generateKeywords(user.displayName?.toLowerCase()),
+                    friends: [],
+                });
+            }
+        } catch (err) {
+            // console.log(err);
+            notification.warning({
+                message: "An account already exists with the same email address!",
+                description: `${err?.email}`,
             });
         }
+        
     };
 
     return (
@@ -61,7 +67,12 @@ export default function Login() {
                             </Button>
                         </Col>
                     </Row>
-                    <Text style={{ textAlign: 'center', display: 'block' }} disabled>@Copyright-DuyenLan</Text>
+                    <Text
+                        style={{ textAlign: "center", display: "block" }}
+                        disabled
+                    >
+                        @Copyright-DuyenLan
+                    </Text>
                 </Col>
             </Row>
         </div>
