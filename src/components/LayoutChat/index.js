@@ -1,6 +1,7 @@
 import { MenuUnfoldOutlined } from "@ant-design/icons";
 import { Col, Layout, Row } from "antd";
-import React, { useState } from "react";
+import { AppContext } from "Context/AppProvider";
+import React, { useContext, useEffect, useState } from "react";
 import SidebarChat from "./SidebarChat";
 import UserInfo from "./UserInfo";
 
@@ -8,6 +9,12 @@ const { Header, Content } = Layout;
 
 export default function LayoutChat({ children, addNewFriend }) {
     const [collapsed, setcollapsed] = useState(false);
+    const { selectedRoomId } = useContext(AppContext);
+
+    useEffect(() => {
+        toggle();
+        return () => {};
+    }, [selectedRoomId]);
 
     const toggle = () => {
         setcollapsed(!collapsed);
