@@ -38,6 +38,11 @@ function ModalAddFriend(props) {
                     handleAddFriend();
                 }
             });
+        }else{
+            notification.warning({
+                message: "This user does not exist!",
+                description: "Please select another user",
+            });
         }
     };
 
