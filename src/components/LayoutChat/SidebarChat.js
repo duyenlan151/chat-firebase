@@ -28,7 +28,7 @@ export default function SidebarChat(props) {
                 <Text disabled>@Copyright-DuyenLan</Text>
             </div>
             <CloseOutlined onClick={toggle} className="btn-close tl" />
-            <div className="logo">Messager</div>
+            <div className="logo">Messenger</div>
             <div style={{ textAlign: "center", margin: 5 }}>
                 <Button
                     type="text"
