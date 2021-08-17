@@ -103,7 +103,7 @@ export default function Chat() {
                     />
                     <Result
                         icon={<SmileOutlined />}
-                        title="If something went wrong, you can fresh f5 to refresh page! Thanks 🥰"
+                        title="If something went wrong, you can press f5 to refresh page! Thanks 🥰"
                         extra={
                             <Button
                                 type="primary"
