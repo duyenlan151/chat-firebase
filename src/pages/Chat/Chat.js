@@ -11,15 +11,66 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const listEmoji = [
-    "😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "😊", "😇", "🙂", "🙃", "😉", "😌", "😍", "🥰", "😘", "😗", "😙", "😚", "😋", "😛", "😝", "😜", "🤪", "🤨", 
-    "🧐", "🤓", "😎", "🤩", "🥳", "😏", "😒", "😞", "😔", "😟", "😕", "🙁", "☹️", "😣", "😖", "😫", "😩", "🥺", "😢", "😭", "😤", "😠", "😡", 
-    "🤬", "🤯", "😳", "🥵",
-]
+    "😀",
+    "😃",
+    "😄",
+    "😁",
+    "😆",
+    "😅",
+    "😂",
+    "🤣",
+    "😊",
+    "😇",
+    "🙂",
+    "🙃",
+    "😉",
+    "😌",
+    "😍",
+    "🥰",
+    "😘",
+    "😗",
+    "😙",
+    "😚",
+    "😋",
+    "😛",
+    "😝",
+    "😜",
+    "🤪",
+    "🤨",
+    "🧐",
+    "🤓",
+    "😎",
+    "🤩",
+    "🥳",
+    "😏",
+    "😒",
+    "😞",
+    "😔",
+    "😟",
+    "😕",
+    "🙁",
+    "☹️",
+    "😣",
+    "😖",
+    "😫",
+    "😩",
+    "🥺",
+    "😢",
+    "😭",
+    "😤",
+    "😠",
+    "😡",
+    "🤬",
+    "🤯",
+    "😳",
+    "🥵",
+];
 
 export default function Chat() {
     const {
         user: { uid, photoURL },
     } = useContext(AuthContext);
+
     const { setIsInviteMemberVisible, selectedRoomId, messageRef } =
         useContext(AppContext);
     const messagesWrapperRef = useRef(false);
@@ -40,7 +91,6 @@ export default function Chat() {
     }, [messageRef]);
 
     const handleSendMessage = async (value) => {
-
         await addDocument("messages", {
             uid: uuidv4(),
             room_id: selectedRoomId,
@@ -54,7 +104,10 @@ export default function Chat() {
     const handleChangeMessage = (e, type) => {
         // let value = e.target.value;
 
-        if ((e.key === "Enter" && !e.shiftKey && valueMess) || (valueMess != undefined && type === 'btn')) {
+        if (
+            (e.key === "Enter" && !e.shiftKey && valueMess) ||
+            (valueMess != undefined && type === "btn")
+        ) {
             e.preventDefault();
 
             setValueMess("");
@@ -87,8 +140,8 @@ export default function Chat() {
     };
 
     const handleClickEmoji = (e) => {
-        setValueMess(valueMess + e.target.innerText)
-    }
+        setValueMess(valueMess + e.target.innerText);
+    };
 
     return (
         <LayoutChat addNewFriend={handleAddNewFriend}>
@@ -166,7 +219,9 @@ export default function Chat() {
                                     <Button
                                         type="text"
                                         icon={<SendOutlined />}
-                                        onClick={(e) => handleChangeMessage(e, 'btn')}
+                                        onClick={(e) =>
+                                            handleChangeMessage(e, "btn")
+                                        }
                                     />
                                     <div className="emoji">
                                         <Button
@@ -175,13 +230,29 @@ export default function Chat() {
                                             icon={<SmileOutlined />}
                                             onClick={() => setisEmoji(!isEmoji)}
                                         />
-                                        { isEmoji && <div class="emoji-list">
-                                            <Card style={{ width: 300 }}>
-                                                { listEmoji && listEmoji.map((emoji, index) => 
-                                                    <span onClick={(e) => handleClickEmoji(e)} key={index}>{emoji}</span>
-                                                )}
-                                            </Card>
-                                        </div>}
+                                        {isEmoji && (
+                                            <div class="emoji-list">
+                                                <Card style={{ width: 300 }}>
+                                                    {listEmoji &&
+                                                        listEmoji.map(
+                                                            (emoji, index) => (
+                                                                <span
+                                                                    onClick={(
+                                                                        e
+                                                                    ) =>
+                                                                        handleClickEmoji(
+                                                                            e
+                                                                        )
+                                                                    }
+                                                                    key={index}
+                                                                >
+                                                                    {emoji}
+                                                                </span>
+                                                            )
+                                                        )}
+                                                </Card>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </Col>

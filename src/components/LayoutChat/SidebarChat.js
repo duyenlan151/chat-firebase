@@ -48,7 +48,7 @@ export default function SidebarChat(props) {
                     ))}
                 {isEmpty(roomsRef) && (
                     <Menu.Item key="0" style={{ textAlign: "center" }}>
-                        Let add new friend 😃
+                        Add friend 😃
                     </Menu.Item>
                 )}
                 {/* <Menu.Item key="1">

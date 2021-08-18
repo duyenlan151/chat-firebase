@@ -1,12 +1,10 @@
+import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Image } from "antd";
-import { AuthContext } from "Context/AuthProvider";
 import { auth } from "firebase/config";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 
 function UserInfo() {
-    const {
-        user: { displayName, photoURL },
-    } = useContext(AuthContext);
+    let userLocal = JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {
         return () => {};
@@ -16,18 +14,20 @@ function UserInfo() {
             <Avatar
                 style={{ marginRight: 4 }}
                 src={
-                    <Image
-                        src={
-                            photoURL
-                                ? photoURL
-                                : displayName?.charAt[0]?.toUpperCase()
-                        }
+                    userLocal.photoURL
+                    ? <Image
+                        src={ userLocal.photoURL }
                     />
+                    : <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
                 }
             />
-            {displayName}
+            {userLocal.displayName}
             <span style={{ marginLeft: 5 }}>
-                <Button onClick={() => auth.signOut()}>Logout</Button>
+                <Button onClick={() => {
+                    window.location.reload();
+                    localStorage.removeItem('user');
+                    auth.signOut()
+                }}>Logout</Button>
             </span>
         </div>
     );

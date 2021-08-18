@@ -1,5 +1,6 @@
 import { Spin } from 'antd';
 import { auth } from 'firebase/config';
+import { isEmpty } from 'lodash';
 import React, { createContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
@@ -7,22 +8,39 @@ export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
     const [user, setUser] = useState({});
+    console.log("🚀 ~ file: AuthProvider.js ~ line 11 ~ AuthProvider ~ user", user)
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
     // const
 
     useEffect(() => {
+
+        let userLocal = JSON.parse(localStorage.getItem('user'));
+        if(!isEmpty(userLocal)){
+            const { displayName, email, uid, photoURL } = userLocal;
+            setUser( { displayName, email, uid, photoURL });
+            setIsLoading(false);
+            history.push('/');
+            // window.location.href = '/';
+            return;
+        }else{
+            localStorage.removeItem('user');
+            setIsLoading(false);
+            history.push('/login');
+        }
+
         const unsubscribed = auth.onAuthStateChanged((user) => {
             if(user){
                 const { displayName, email, uid, photoURL } = user;
                 setUser({ displayName, email, uid, photoURL });
                 setIsLoading(false);
-                localStorage.setItem('login', true);
+
+                localStorage.setItem("user", JSON.stringify(user))
                 history.push('/');
                 return;
                 // window.location.href = '/chat';
             }
-            localStorage.removeItem('login');
+            localStorage.removeItem('user');
             setIsLoading(false);
             history.push('/login');
         })
