@@ -80,15 +80,18 @@ export default function Login() {
                 keywords: generateKeywords(botName.toLowerCase()),
             });
 
-            localStorage.setItem("user", JSON.stringify({
-                displayName: botName,
-                email: botName,
-                photoURL: null,
-                uid: uuidv4(),
-            }))
+            localStorage.setItem(
+                "user",
+                JSON.stringify({
+                    displayName: botName,
+                    email: botName,
+                    photoURL: null,
+                    uid: uuidv4(),
+                })
+            );
 
             setTimeout(() => {
-                history.push('/');
+                history.push("/");
             }, 1200);
         } catch (error) {
             console.log("🚀 ~ file: Login.js ~ line 32 ~ Login ~ error", error);
@@ -145,13 +148,15 @@ export default function Login() {
                         <Col md={24} lg={12}>
                             <Button
                                 icon={<FacebookOutlined />}
-                                style={{ width: "100%" }}
+                                style={{ width: "100%", marginBottom: 8 }}
                                 onClick={() => handleLogin(fbProvider)}
                             >
                                 Facebook
                             </Button>
                         </Col>
-                        <Col lg={12}>
+                    </Row>
+                    <Row justify="center">
+                        <Col md={24} lg={12}>
                             <Button
                                 icon={<RobotOutlined />}
                                 style={{ width: "100%" }}
@@ -171,8 +176,10 @@ export default function Login() {
                         onCancel={handleCancel}
                         title={
                             <>
-                                Continue with: 
-                                <Text type="success" style={{ marginLeft: 3 }}>{botName}</Text>
+                                Continue with:
+                                <Text type="success" style={{ marginLeft: 3 }}>
+                                    {botName}
+                                </Text>
                             </>
                         }
                     >
