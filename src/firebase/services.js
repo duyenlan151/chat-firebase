@@ -426,8 +426,6 @@ const nameData = {
 
 export const autoGenerateName = () => {
     let firstName = nameData.firstName[Math.floor(Math.random()*nameData.firstName.length)];
-    console.log("🚀 ~ file: services.js ~ line 429 ~ autoGenerateName ~ firstName", firstName)
     let lastNamePrefix = nameData.lastNamePrefix[Math.floor(Math.random()*nameData.lastNamePrefix.length)];
-    console.log("🚀 ~ file: services.js ~ line 431 ~ autoGenerateName ~ lastNamePrefix", lastNamePrefix)
     return (firstName + '' + lastNamePrefix);
 }
